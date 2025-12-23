@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import logo from "/logo.svg";
 
 const Navbar = ({ searchQuery, setSearchQuery }) => {
@@ -8,9 +9,9 @@ const Navbar = ({ searchQuery, setSearchQuery }) => {
   return (
     <header className="flex flex-col sm:flex-row items-center justify-between gap-3.5 px-2.5 sm:px-11 py-8 sticky top-0 bg-white z-10">
       <div>
-        <a href="#">
+        <Link to={"/"}>
           <img src={logo} alt="Logo" />
-        </a>
+        </Link>
       </div>
       <div>
         <div className="flex items-center bg-bg-gray rounded-md p-2.5">
