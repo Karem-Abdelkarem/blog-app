@@ -4,23 +4,28 @@ import BlogDetails from "./Pages/BlogDetails";
 import Layout from "./Pages/Layout";
 import ErrorPage from "./Pages/ErrorPage";
 
-let router = createBrowserRouter([
+let router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      Component: Layout,
+      ErrorBoundary: ErrorPage,
+      children: [
+        {
+          index: true,
+          Component: Home,
+        },
+        {
+          path: "/blog/:id",
+          Component: BlogDetails,
+        },
+      ],
+    },
+  ],
   {
-    path: "/",
-    Component: Layout,
-    ErrorBoundary: ErrorPage,
-    children: [
-      {
-        index: true,
-        Component: Home,
-      },
-      {
-        path: "/blog/:id",
-        Component: BlogDetails,
-      },
-    ],
-  },
-]);
+    basename: "/blog-app",
+  }
+);
 
 function App() {
   return <RouterProvider router={router} />;
