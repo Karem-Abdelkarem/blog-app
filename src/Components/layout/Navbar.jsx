@@ -1,8 +1,12 @@
 import logo from "/logo.svg";
 
-const Navbar = () => {
+const Navbar = ({ searchQuery, setSearchQuery }) => {
+  const onSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
   return (
-    <header className="flex flex-col sm:flex-row items-center justify-between gap-3.5 px-2.5 sm:px-11 py-8">
+    <header className="flex flex-col sm:flex-row items-center justify-between gap-3.5 px-2.5 sm:px-11 py-8 sticky top-0 bg-white z-10">
       <div>
         <a href="#">
           <img src={logo} alt="Logo" />
@@ -10,7 +14,13 @@ const Navbar = () => {
       </div>
       <div>
         <div className="flex items-center bg-bg-gray rounded-md p-2.5">
-          <input type="search" placeholder="Search" className="outline-0" />
+          <input
+            type="search"
+            placeholder="Search"
+            className="outline-0"
+            value={searchQuery}
+            onChange={onSearchChange}
+          />
           <svg
             width="16"
             height="16"
